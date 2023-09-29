@@ -1,32 +1,18 @@
-<script>
+<script setup>
 import { Icon } from "@iconify/vue";
 
-export default {
-  props: {
-    todo: {
-      type: Object,
-      required: true,
-    },
-    index: {
-      type: Number,
-      required: true,
-    },
+const props = defineProps({
+  todo: {
+    type: Object,
+    required: true,
   },
-  methods: {
-    toggleComplete() {
-      this.$emit("toggle-complete");
-    },
-    editTodo() {
-      this.$emit("edit-todo");
-    },
-    updateTodo() {
-      this.$emit("update-todo");
-    },
-    deleteTodo() {
-      this.$emit("delete-todo");
-    },
+  index: {
+    type: Number,
+    required: true,
   },
-};
+});
+
+defineEmits(["toggle-complete", "edit-todo", "update-todo", "delete-todo"]);
 </script>
 
 <template>
