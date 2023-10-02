@@ -32,9 +32,10 @@ defineEmits(["toggle-complete", "edit-todo", "update-todo", "delete-todo"]);
         @input="$emit('update-todo', $event.target.value, index)"
       />
       <span v-else :class="{ 'todo-complete': todo.isCompleted }">
-        <router-link :to="{ name: 'detail', params: { id: todo.id }}">
-        {{ todo.todo }}
+        <router-link :to="{ name: 'detail', params: { id: todo.id }, props: { todo: todo } }">
+          {{ todo.todo }}
         </router-link>
+
       </span>
     </div>
 

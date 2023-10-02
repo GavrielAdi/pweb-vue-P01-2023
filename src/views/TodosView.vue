@@ -36,9 +36,11 @@ export default {
       if (savedTodoList) {
         this.todoList = savedTodoList;
       }
+      console.log("Fetched todoList from local storage:", this.todoList);
     },
     setTodoListLocalStorage() {
       localStorage.setItem("todoList", JSON.stringify(this.todoList));
+      console.log("Stored todoList in local storage:", this.todoList);
     },
     createTodo(todo) {
       this.todoList.push({

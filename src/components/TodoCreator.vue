@@ -2,6 +2,7 @@
 import { reactive } from "vue";
 
 export default {
+  emits: ["create-todo"],
   data() {
     return {
       todoState: reactive({
