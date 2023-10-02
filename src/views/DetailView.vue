@@ -1,0 +1,39 @@
+<script setup>
+import { Icon } from "@iconify/vue";
+</script>
+
+<template>
+    <div class="container">
+        <RouterLink to="/">
+        <Icon
+        icon="ion:arrow-back"
+        width="34"
+        color="black"
+        />
+        </RouterLink>
+        <h1>Detail</h1>
+    </div>
+    <p>To-do list :</p>
+</template>
+
+<style lang="scss" scoped>
+    .container {
+        display: flex;
+        flex-direction: row;
+        margin-top: 100px;
+
+        h1 {
+            flex: 1;
+            text-align: center;
+        }
+
+        icon {
+            flex: 1;
+        }
+    }
+
+    p {
+        margin-top: 50px;
+        text-align: center;
+    }
+</style>

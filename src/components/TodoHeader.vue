@@ -6,8 +6,7 @@ import { RouterLink } from "vue-router";
   <header>
     <nav class="container">
         <div class="branding">
-            <img src="../assets/Vue_Logo_Black.png" alt="vue logo" />
-            <h1>Vue To-do</h1>
+            <h1>Your Everyday To-do Lists</h1>
         </div>
         <ul class="nav-routes">
           <RouterLink to="/">Home</RouterLink>
@@ -29,9 +28,6 @@ header {
       display: flex;
       align-items: center;
       gap: 8px;
-      img {
-        max-width: 50px;
-      }
       h1 {
         font-size: 24px;
       }

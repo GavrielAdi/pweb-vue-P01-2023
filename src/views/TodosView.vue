@@ -1,7 +1,5 @@
 <script>
-import { computed, ref, watch } from "vue";
 import { uid } from "uid";
-import { Icon } from "@iconify/vue";
 
 import TodoCreator from "../components/TodoCreator.vue";
 import TodoItem from "../components/TodoItem.vue";
@@ -83,11 +81,9 @@ export default {
       />
     </ul>
     <p v-else class="todos-msg">
-      <Icon icon="noto-v1:sad-but-relieved-face" width="24" />
       <span>You have no todo's to complete. Add One!</span>
     </p>
     <p v-if="todoCompleted && todoList.length > 0" class="todo-complete">
-      <Icon icon="noto-v1:party-popper" width="24" />
       <span>You have done all your to-do's!</span>
     </p>
   </main>

@@ -1,4 +1,5 @@
 <script setup>
+import { RouterLink } from "vue-router";
 import { Icon } from "@iconify/vue";
 
 const props = defineProps({
@@ -31,8 +32,34 @@ defineEmits(["toggle-complete", "edit-todo", "update-todo", "delete-todo"]);
         @input="$emit('update-todo', $event.target.value, index)"
       />
       <span v-else :class="{ 'todo-complete': todo.isCompleted }">
+        <router-link :to="{ name: 'detail', params: { id: todo.id }}">
         {{ todo.todo }}
+        </router-link>
       </span>
+    </div>
+
+    <div class="category">
+      <select
+        v-if="todo.isEditing"
+        v-model="todo.category"
+        @change="$emit('update-todo', todo.category, index)"
+      >
+        <option value="Not Urgent">Not Urgent</option>
+        <option value="Normal">Normal</option>
+        <option value="Important">Important</option>
+        <option value="Urgent">Very Important (Urgent)</option>
+      </select>
+      <span v-else>{{ todo.category }}</span>
+    </div>
+
+    <div class="deadline">
+      <input
+        v-if="todo.isEditing"
+        type="date"
+        v-model="todo.deadline"
+        @change="$emit('update-todo', todo.deadline, index)"
+      />
+      <span v-else>{{ todo.deadline }}</span>
     </div>
 
     <div class="todo-actions">
@@ -94,9 +121,12 @@ li {
 
   .todo {
     flex: 1;
+    a {
+      text-decoration: none;
+      color: #41b080;
+    }
     span {
       font-size: 1.2rem;
-      color: #41b080;
     }
     .todo-complete {
       color: red;
@@ -109,7 +139,39 @@ li {
       border: 2px solid #41b080;
     }
   }
+  .category {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    gap: 6px;
+    select {
+      width: auto;
+      border: 1px solid #41b080;
+      padding: 2px 4px;
+      background-color: white;
+    }
+    span {
+      font-size: 1.2rem;
+      color: #41b080;
+    }
+  }
 
+  .deadline {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    gap: 6px;
+    input[type="date"] {
+      width: auto;
+      border: 1px solid #41b080;
+      padding: 2px 4px;
+      background-color: white;
+    }
+    span {
+      font-size: 1.2rem;
+      color: #41b080;
+    }
+  }
   .todo-actions {
     display: flex;
     gap: 6px;
